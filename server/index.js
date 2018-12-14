@@ -33,13 +33,13 @@ function startWebServer(){
   app.get("/api/publicinformation", function (req, res) {
     res.send("Anyone can see this");
   });
-
+  //not secure
   app.use(express.static("public"));
   app.use(bodyParser.json());
   app.use(userRoutes);
   app.use(sessionRoutes);
   app.use(authenticationRoutes);
-
+  //secure
   app.get("/api/canigetthis", function (req, res) {
     res.send("You got the data. You are authenticated");
   });
@@ -47,7 +47,7 @@ function startWebServer(){
     res.send(`The current user is ${req.user.username}`);
   });
 
-
+  //database stuff goes here for the user data that is saved in the database that they are trying to retreive
   app.get('*', function(req, res) {
     res.sendFile(path.join(__dirname + '/public/index.html'));
   });
