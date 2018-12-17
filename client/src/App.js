@@ -44,6 +44,29 @@ class App extends Component {
 
   handleSignIn(credentials) {
     // Handle Sign Up
+    const { username, password } = credentials;
+    if (!username.trim() || !password.trim() ) {
+      this.setState({
+        signUpSignInError: "Must Provide All Fields"
+      });
+    } else {
+      fetch("/signin", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(credentials)
+      }).then((res) => {
+         if(res.status === 401){
+           this.setState({
+             signUpSignInError: "Invalid Login"
+           })
+         } else {
+           this.setState({
+             authenticated: true
+           });
+           return res.json();
+         }
+      })
+    }
   }
 
   handleSignOut() {
@@ -57,7 +80,8 @@ class App extends Component {
     return (
       <SignUpSignIn 
         error={this.state.signUpSignInError} 
-        onSignUp={this.handleSignUp} 
+        onSignUp={this.handleSignUp}
+        onSignIn={this.handleSignIn} 
       />
     );
   }
