@@ -35,7 +35,6 @@ class SignUp extends Component {
             value={this.state.username}
           />
         </FormGroup>
-
         <FormGroup>
           <ControlLabel>Password</ControlLabel>
           <FormControl
@@ -48,7 +47,6 @@ class SignUp extends Component {
             value={this.state.password}
           />
         </FormGroup>
-
         <Button type="submit">
          Sign In
        </Button>
