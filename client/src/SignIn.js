@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { FormGroup, ControlLabel, FormControl, Button } from "react-bootstrap";
 
-class SignUp extends Component {
+class SignIn extends Component {
   constructor() {
     super();
 
@@ -55,8 +55,8 @@ class SignUp extends Component {
   }
 }
 
-SignUp.propTypes = {
+SignIn.propTypes = {
   onSignIn: PropTypes.func.isRequired
 };
 
-export default SignUp;
+export default SignIn;
